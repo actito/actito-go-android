@@ -12,8 +12,6 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
 
-        maven(url = "https://central.sonatype.com/repository/maven-snapshots/")
-
         mavenLocal()
     }
 }
