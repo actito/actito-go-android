@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove" />
+
+    <application
+        android:name="com.actito.go.ActitoApp"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.App"
+        tools:targetApi="31">
+        <activity
+            android:name="com.actito.go.ui.MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.App"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.actito.intent.action.RemoteMessageOpened" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.actito.intent.action.NotificationOpened" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.actito.intent.action.ActionOpened" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="${configuration_link_host}"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="${applicationId}" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="${secondaryDeepLinksScheme}" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.actito.push.ui.NotificationActivity"
+            android:theme="@style/Theme.App.Actito.Translucent" />
+
+        <activity
+            android:name="com.actito.iam.ui.InAppMessagingActivity"
+            android:theme="@style/Theme.App.Actito.Iam"
+            tools:replace="android:theme" />
+
+        <!-- Provider to auto configure Actito -->
+        <provider
+            android:name="com.actito.ActitoConfigurationProvider"
+            android:authorities="${applicationId}.ActitoConfigurationProvider"
+            android:exported="false"
+            tools:node="remove" />
+
+        <receiver
+            android:name="com.actito.go.PushReceiver"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.actito.debug_logging_enabled"
+            android:value="true" />
+
+        <meta-data
+            android:name="com.actito.push.notification_small_icon"
+            android:resource="@drawable/ic_stat_notification" />
+
+        <meta-data
+            android:name="com.actito.geo.beacons.foreground_service_enabled"
+            android:value="true" />
+
+        <meta-data
+            android:name="com.actito.geo.beacons.service_notification_small_icon"
+            android:resource="@drawable/ic_baseline_bluetooth_searching_24" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <!-- Disable the WorkManager auto init so Hilt can take over. -->
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+        </provider>
+
+        <meta-data
+            android:name="google_analytics_adid_collection_enabled"
+            android:value="false" />
+
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="${crashlyticsEnabled}" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${googleMapsApiKey}" />
+
+    </application>
+
+</manifest>
