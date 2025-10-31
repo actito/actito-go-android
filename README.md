@@ -4,16 +4,16 @@
 
 The GO app supports several deep links. You can invoke those manually, or send them in a notification! 🚀
 
-| Action                   | Deep link                                     |
-|--------------------------|-----------------------------------------------|
-| Open the home tab        | `re.notifica.go://notifica.re/home`           |
-| Open the cart tab        | `re.notifica.go://notifica.re/cart`           |
-| Open the settings tab    | `re.notifica.go://notifica.re/settings`       |
-| Open the inbox           | `re.notifica.go://notifica.re/inbox`          |
-| Open the user profile    | `re.notifica.go://notifica.re/profile`        |
-| Open the products list   | `re.notifica.go://notifica.re/products`       |
-| Open the product details | `re.notifica.go://notifica.re/product?id=foo` |
-| Open the events builder  | `re.notifica.go://notifica.re/events`         |
+| Action                   | Deep link                                   |
+|--------------------------|---------------------------------------------|
+| Open the home tab        | `com.actito.go://actito.com/home`           |
+| Open the cart tab        | `com.actito.go://actito.com/cart`           |
+| Open the settings tab    | `com.actito.go://actito.com/settings`       |
+| Open the inbox           | `com.actito.go://actito.com/inbox`          |
+| Open the user profile    | `com.actito.go://actito.com/profile`        |
+| Open the products list   | `com.actito.go://actito.com/products`       |
+| Open the product details | `com.actito.go://actito.com/product?id=foo` |
+| Open the events builder  | `com.actito.go://actito.com/events`         |
 
 ## Supported custom events
 
