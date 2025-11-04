@@ -1,8 +1,8 @@
 # CHANGELOG
 
-## Upcoming release
+## 2.0.0
 
-- Migrate to Actito SDK
+- Migrate to Actito SDK 5.0.0-beta.1
 - Update dependencies
 
 ## 1.7.1
