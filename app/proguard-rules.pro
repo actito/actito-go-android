@@ -31,3 +31,6 @@
 
 # With R8 full mode generic signatures are stripped for classes that are not kept.
 -keep,allowobfuscation,allowshrinking class retrofit2.Response
+
+# Ensure Actito LaunchComponents are kept when using 5.0.0-beta.1
+-keep class com.actito.** { *; }

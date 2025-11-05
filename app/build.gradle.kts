@@ -24,8 +24,8 @@ android {
         applicationId = "re.notifica.go"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 23
-        versionName = "1.7.1"
+        versionCode = 24
+        versionName = "2.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
