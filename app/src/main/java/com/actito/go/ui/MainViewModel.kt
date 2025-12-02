@@ -139,6 +139,12 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    override fun onUnlaunched() {
+        preferences.hasIntroFinished = false
+        navigationChannel.trySend(NavigationOption.SPLASH)
+        launch()
+    }
+
     // endregion
 
     enum class NavigationOption {
