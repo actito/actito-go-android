@@ -140,7 +140,7 @@ class MainViewModel @Inject constructor(
     }
 
     override fun onUnlaunched() {
-        preferences.hasIntroFinished = false
+        preferences.resetPreferences()
         navigationChannel.trySend(NavigationOption.SPLASH)
         launch()
     }
