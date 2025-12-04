@@ -15,7 +15,7 @@ import com.actito.go.R
 import com.actito.go.core.createDynamicShortcuts
 import com.actito.go.core.loadRemoteConfig
 import com.actito.go.ktx.logIntroFinished
-import com.actito.go.network.push.PushServiceClient
+import com.actito.go.network.push.PushServiceFactory
 import com.actito.go.network.push.payloads.EnrollmentPayload
 import com.actito.go.storage.preferences.ActitoSharedPreferences
 import com.actito.iam.ktx.inAppMessaging
@@ -39,7 +39,7 @@ import javax.inject.Inject
 class IntroViewModel @Inject constructor(
     @param:ApplicationContext private val context: Context,
     private val preferences: ActitoSharedPreferences,
-    private val pushServiceClient: PushServiceClient,
+    private val pushServiceFactory: PushServiceFactory,
 ) : ViewModel() {
 
     private val _currentPage = MutableLiveData(IntroPage.WELCOME)
@@ -93,7 +93,7 @@ class IntroViewModel @Inject constructor(
                     if (programId != null) {
                         Timber.d("Creating loyalty program enrollment.")
 
-                        val pushService = pushServiceClient.createService(configuration.environment.baseUrl)
+                        val pushService = pushServiceFactory.createService(configuration.environment.baseUrl)
                         val response = pushService.createEnrollment(
                             programId = programId,
                             payload = EnrollmentPayload(

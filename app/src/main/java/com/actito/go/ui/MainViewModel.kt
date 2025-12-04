@@ -11,7 +11,7 @@ import com.actito.go.core.configure
 import com.actito.go.core.createDynamicShortcuts
 import com.actito.go.core.loadRemoteConfig
 import com.actito.go.models.AppConfiguration
-import com.actito.go.network.push.PushServiceClient
+import com.actito.go.network.push.PushServiceFactory
 import com.actito.go.storage.preferences.ActitoSharedPreferences
 import com.actito.go.workers.UpdateProductsWorker
 import com.actito.iam.ktx.inAppMessaging
@@ -35,7 +35,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     @param:ApplicationContext private val context: Context,
     private val preferences: ActitoSharedPreferences,
-    private val pushServiceClient: PushServiceClient,
+    private val pushServiceFactory: PushServiceFactory,
     private val workManager: WorkManager,
 ) : ViewModel(), Actito.Listener {
 
@@ -74,7 +74,7 @@ class MainViewModel @Inject constructor(
     suspend fun configure(code: String, environment: AppConfiguration.Environment): ConfigurationResult = withContext(Dispatchers.IO) {
         if (hasConfiguration) return@withContext ConfigurationResult.ALREADY_CONFIGURED
 
-        val pushService = pushServiceClient.createService(environment.baseUrl)
+        val pushService = pushServiceFactory.createService(environment.baseUrl)
 
         val configuration = pushService.getConfiguration(code).let {
             AppConfiguration(

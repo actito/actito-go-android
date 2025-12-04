@@ -6,7 +6,7 @@ import androidx.work.WorkManager
 import com.actito.go.BuildConfig
 import com.actito.go.core.DeepLinksService
 import com.actito.go.network.assets.AssetsService
-import com.actito.go.network.push.PushServiceClient
+import com.actito.go.network.push.PushServiceFactory
 import com.actito.go.storage.db.ActitoDatabase
 import com.actito.go.storage.preferences.ActitoSharedPreferences
 import com.squareup.moshi.Moshi
@@ -65,8 +65,8 @@ class AppModule {
     }
 
     @Provides
-    fun providePushServiceClient(client: OkHttpClient, moshi: Moshi): PushServiceClient {
-        return PushServiceClient(client, moshi)
+    fun providePushServiceFactory(client: OkHttpClient, moshi: Moshi): PushServiceFactory {
+        return PushServiceFactory(client, moshi)
     }
 
     @Provides

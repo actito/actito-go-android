@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.actito.go.core.determineEnvironment
 import com.actito.go.core.extractConfigurationCode
 import com.actito.go.models.AppConfiguration
-import com.actito.go.network.push.PushServiceClient
+import com.actito.go.network.push.PushServiceFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ScannerViewModel @Inject constructor(
-    private val pushServiceClient: PushServiceClient,
+    private val pushServiceFactory: PushServiceFactory,
 ) : ViewModel() {
 
     suspend fun fetchConfiguration(barcode: String): AppConfiguration = withContext(Dispatchers.IO) {
@@ -26,7 +26,7 @@ class ScannerViewModel @Inject constructor(
         }
 
         val environment = determineEnvironment(barcode.toUri())
-        val pushService = pushServiceClient.createService(environment.baseUrl)
+        val pushService = pushServiceFactory.createService(environment.baseUrl)
 
         pushService.getConfiguration(code).let {
             AppConfiguration(

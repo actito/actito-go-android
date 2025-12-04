@@ -5,7 +5,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class PushServiceClient (
+class PushServiceFactory (
     private val client: OkHttpClient,
     private val moshi: Moshi
 ) {
