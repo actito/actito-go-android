@@ -107,6 +107,7 @@
     <string name="settings_topics_engineering">Engineering &amp; technology</string>
     <string name="settings_topics_staff">Staff &amp; experiences</string>
     <string name="settings_application_version" translatable="false">v%s</string>
+    <string name="settings_application_test_environment">Test Application</string>
     <string name="settings_application_id_copied_message">Application ID copied to clipboard.</string>
 
     <string name="events_title">Events</string>
