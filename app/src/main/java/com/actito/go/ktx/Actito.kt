@@ -42,7 +42,7 @@ suspend fun ActitoEventsModule.logIntroFinished() {
 }
 
 suspend fun ActitoEventsModule.logPageViewed(page: PageView) {
-    logCustom("page_viewed.${page.rawValue}")
+    logCustom("page_viewed-${page.rawValue}")
 }
 
 suspend fun ActitoEventsModule.logAddToCart(product: Product) {
