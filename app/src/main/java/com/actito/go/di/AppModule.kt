@@ -6,7 +6,7 @@ import androidx.work.WorkManager
 import com.actito.go.BuildConfig
 import com.actito.go.core.DeepLinksService
 import com.actito.go.network.assets.AssetsService
-import com.actito.go.network.push.PushService
+import com.actito.go.network.push.PushServiceClient
 import com.actito.go.storage.db.ActitoDatabase
 import com.actito.go.storage.preferences.ActitoSharedPreferences
 import com.squareup.moshi.Moshi
@@ -19,8 +19,6 @@ import okhttp3.Authenticator
 import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -67,13 +65,8 @@ class AppModule {
     }
 
     @Provides
-    fun providePushService(client: OkHttpClient, moshi: Moshi): PushService {
-        return Retrofit.Builder()
-            .client(client)
-            .baseUrl("https://push.notifica.re")
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .build()
-            .create(PushService::class.java)
+    fun providePushServiceClient(client: OkHttpClient, moshi: Moshi): PushServiceClient {
+        return PushServiceClient(client, moshi)
     }
 
     @Provides

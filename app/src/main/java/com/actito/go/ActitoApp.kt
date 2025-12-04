@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import com.actito.Actito
+import com.actito.go.core.configure
 import com.actito.go.live_activities.LiveActivitiesController
 import com.actito.go.storage.preferences.ActitoSharedPreferences
 import com.actito.push.ktx.push
@@ -42,7 +43,7 @@ class ActitoApp : Application(), Configuration.Provider {
         // Configure Actito if there is a stored configuration set.
         val configuration = preferences.appConfiguration
         if (configuration != null) {
-            Actito.configure(this, configuration.applicationKey, configuration.applicationSecret)
+            configure(this, configuration)
         }
 
         Actito.push().intentReceiver = PushReceiver::class.java
