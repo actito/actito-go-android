@@ -1,16 +1,24 @@
 package com.actito.go.ui.home
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.actito.geo.ActitoGeo
+import com.actito.go.BuildConfig
 import com.actito.go.R
 import com.actito.go.databinding.FragmentHomeBinding
+import com.actito.go.ktx.hasGeofencingCapabilities
 import com.actito.go.live_activities.models.CoffeeBrewingState
 import com.actito.go.models.Product
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,8 +49,16 @@ class HomeFragment : Fragment() {
         binding.beaconsList.adapter = beaconsAdapter
         binding.beaconsList.layoutManager = LinearLayoutManager(requireContext())
 
+        updateBeaconSection()
+
         setupListeners()
         setupObservers()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        updateBeaconSection()
     }
 
     override fun onDestroy() {
@@ -53,6 +69,21 @@ class HomeFragment : Fragment() {
     private fun setupListeners() {
         binding.productsListButton.setOnClickListener {
             findNavController().navigate(R.id.home_to_products_list_action)
+        }
+
+        binding.geofencingAlertButton.setOnClickListener {
+            openAppSettings()
+        }
+
+        binding.viewPolicyButton.setOnClickListener {
+            CustomTabsIntent.Builder()
+                .setShowTitle(true)
+                .build()
+                .launchUrl(requireContext(), BuildConfig.LOCATION_DATA_PRIVACY_POLICY_URL.toUri())
+        }
+
+        binding.locationDisabledAlertButton.setOnClickListener {
+            findNavController().navigate(R.id.settings_fragment)
         }
 
         binding.eventsButton.setOnClickListener {
@@ -110,5 +141,31 @@ class HomeFragment : Fragment() {
         findNavController().navigate(
             HomeFragmentDirections.homeToProductDetailsAction(product.id)
         )
+    }
+
+    private fun updateBeaconSection() {
+        binding.beaconsCard.isVisible = false
+        binding.geofencingAlert.isVisible = false
+        binding.locationDisabledAlert.isVisible = false
+
+        when {
+            !ActitoGeo.hasGeofencingCapabilities -> {
+                binding.geofencingAlert.isVisible = true
+            }
+            !ActitoGeo.hasLocationServicesEnabled -> {
+                binding.locationDisabledAlert.isVisible = true
+            }
+            else -> {
+                binding.beaconsCard.isVisible = true
+            }
+        }
+    }
+
+    private fun openAppSettings() {
+        val settingsIntent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+            data = Uri.fromParts("package", requireContext().packageName, null)
+        }
+
+        startActivity(settingsIntent)
     }
 }

@@ -29,12 +29,10 @@ val ActitoGeo.hasGeofencingCapabilities: Boolean
             else -> Manifest.permission.ACCESS_FINE_LOCATION
         }
 
-        val hasLocationPermissions = ContextCompat.checkSelfPermission(
+        return ContextCompat.checkSelfPermission(
             Actito.requireContext(),
             permission
         ) == PackageManager.PERMISSION_GRANTED
-
-        return hasLocationServicesEnabled && hasLocationPermissions
     }
 
 suspend fun ActitoEventsModule.logIntroFinished() {
