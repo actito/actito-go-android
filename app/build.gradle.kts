@@ -68,6 +68,7 @@ android {
             )
 
             manifestPlaceholders["configuration_link_host"] = "go-demo-dev.ntc.re"
+            manifestPlaceholders["test_configuration_link_host"] = "go-demo-test-dev.test.ntc.re"
             manifestPlaceholders["crashlyticsEnabled"] = false
             manifestPlaceholders["googleMapsApiKey"] = properties.getProperty("google.maps.key.debug")
             manifestPlaceholders["secondaryDeepLinksScheme"] = "com.actito.go.dev"
@@ -85,6 +86,7 @@ android {
             )
 
             manifestPlaceholders["configuration_link_host"] = "go-demo.ntc.re"
+            manifestPlaceholders["test_configuration_link_host"] = "go-demo-test.test.ntc.re"
             manifestPlaceholders["crashlyticsEnabled"] = true
             manifestPlaceholders["googleMapsApiKey"] = properties.getProperty("google.maps.key.release")
             manifestPlaceholders["secondaryDeepLinksScheme"] = "com.actito.go"

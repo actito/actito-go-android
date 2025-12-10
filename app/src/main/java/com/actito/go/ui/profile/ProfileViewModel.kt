@@ -108,7 +108,7 @@ class ProfileViewModel @Inject constructor(
         user.delete().await()
 
         // Register the device as anonymous.
-        Actito.device().updateUser(userId = null, userName = null)
+        Actito.unlaunch()
     }
 
     suspend fun handleAuthenticationResult(result: GetCredentialResponse) {

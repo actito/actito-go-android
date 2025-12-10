@@ -29,6 +29,8 @@ import com.actito.go.BuildConfig
 import com.actito.go.R
 import com.actito.go.databinding.FragmentSettingsBinding
 import com.actito.go.ktx.hasLocationTrackingCapabilities
+import com.actito.go.models.AppConfiguration
+import com.actito.go.storage.preferences.ActitoSharedPreferences
 import com.actito.inbox.ktx.inbox
 import com.actito.models.ActitoDoNotDisturb
 import com.actito.models.ActitoTime
@@ -36,9 +38,15 @@ import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import javax.inject.Inject
 
-class SettingsFragment : Fragment() {
+@AndroidEntryPoint
+class SettingsFragment (): Fragment() {
+    @Inject
+    lateinit var preferences: ActitoSharedPreferences
+
     private val pendingRationales = mutableListOf<PermissionType>()
 
     private val viewModel: SettingsViewModel by viewModels()
@@ -143,6 +151,11 @@ class SettingsFragment : Fragment() {
         binding.appNameLabel.text = application?.name
         binding.appIdLabel.text = application?.id
         binding.appVersionLabel.text = getString(R.string.settings_application_version, BuildConfig.VERSION_NAME)
+
+        if (preferences.appConfiguration?.environment == AppConfiguration.Environment.TEST) {
+                binding.appEnvironmentLabel.isVisible = true
+                binding.appEnvironmentLabel.text = getString(R.string.settings_application_test_environment)
+        }
 
         binding.appInformationSection.isVisible = application != null
         binding.appInformationSection.setOnLongClickListener {
