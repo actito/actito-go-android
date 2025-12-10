@@ -2,13 +2,12 @@ package com.actito.go.ktx
 
 import android.os.Build
 import android.text.Html
-import android.text.Spanned
 
-fun String.toHtml(): Spanned {
+fun String.stripHtml(): String {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        return Html.fromHtml(this, Html.FROM_HTML_MODE_COMPACT)
+        return Html.fromHtml(this, Html.FROM_HTML_MODE_COMPACT).toString()
     } else {
         @Suppress("DEPRECATION")
-        return Html.fromHtml(this)
+        return Html.fromHtml(this).toString()
     }
 }
