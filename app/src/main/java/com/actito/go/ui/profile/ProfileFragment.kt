@@ -20,7 +20,6 @@ import androidx.credentials.exceptions.GetCredentialCancellationException
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
 import com.actito.go.BuildConfig
 import com.actito.go.R
 import com.actito.go.databinding.FragmentProfileBinding
@@ -74,7 +73,6 @@ class ProfileFragment : Fragment() {
                     lifecycleScope.launch {
                         try {
                             viewModel.deleteAccount()
-                            showIntro()
                         } catch (e: Exception) {
                             if (e is FirebaseAuthRecentLoginRequiredException) {
                                 Timber.w("Must re-authenticate the user before removing the account.")
@@ -261,7 +259,6 @@ class ProfileFragment : Fragment() {
 
                 try {
                     viewModel.deleteAccount()
-                    showIntro()
                 } catch (_: Exception) {
                     Snackbar.make(
                         binding.root,
@@ -284,13 +281,6 @@ class ProfileFragment : Fragment() {
                 Snackbar.make(binding.root, R.string.intro_login_error_message, Snackbar.LENGTH_SHORT).show()
             }
         }
-    }
-
-    private fun showIntro() {
-        // Access the parent NavController.
-        // Using findNavController will yield a reference to the Bottom Navigation NavController.
-        val navController = requireActivity().findNavController(R.id.nav_host_fragment)
-        navController.navigate(R.id.global_to_intro_action)
     }
 
     companion object {

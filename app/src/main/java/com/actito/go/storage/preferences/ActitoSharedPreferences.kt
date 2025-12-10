@@ -30,4 +30,10 @@ class ActitoSharedPreferences @Inject constructor(
     var membershipCardUrl: String?
         get() = preferences.getString("membership_card_url", null)
         set(value) = preferences.edit { putString("membership_card_url", value) }
+
+    fun resetPreferences() {
+        hasIntroFinished = false
+        hasStoreEnabled = false
+        membershipCardUrl = null
+    }
 }
