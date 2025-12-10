@@ -7,10 +7,11 @@ import androidx.lifecycle.viewModelScope
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.actito.Actito
+import com.actito.go.core.configure
 import com.actito.go.core.createDynamicShortcuts
 import com.actito.go.core.loadRemoteConfig
 import com.actito.go.models.AppConfiguration
-import com.actito.go.network.push.PushService
+import com.actito.go.network.push.PushServiceFactory
 import com.actito.go.storage.preferences.ActitoSharedPreferences
 import com.actito.go.workers.UpdateProductsWorker
 import com.actito.iam.ktx.inAppMessaging
@@ -34,7 +35,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     @param:ApplicationContext private val context: Context,
     private val preferences: ActitoSharedPreferences,
-    private val pushService: PushService,
+    private val pushServiceFactory: PushServiceFactory,
     private val workManager: WorkManager,
 ) : ViewModel(), Actito.Listener {
 
@@ -70,14 +71,17 @@ class MainViewModel @Inject constructor(
     }
 
 
-    suspend fun configure(code: String): ConfigurationResult = withContext(Dispatchers.IO) {
+    suspend fun configure(code: String, environment: AppConfiguration.Environment): ConfigurationResult = withContext(Dispatchers.IO) {
         if (hasConfiguration) return@withContext ConfigurationResult.ALREADY_CONFIGURED
+
+        val pushService = pushServiceFactory.createService(environment.baseUrl)
 
         val configuration = pushService.getConfiguration(code).let {
             AppConfiguration(
                 applicationKey = it.demo.applicationKey,
                 applicationSecret = it.demo.applicationSecret,
                 loyaltyProgramId = it.demo.loyaltyProgram,
+                environment = environment
             )
         }
 
@@ -95,7 +99,7 @@ class MainViewModel @Inject constructor(
             ?: throw IllegalStateException("Cannot launch Actito before the application has been configured.")
 
         if (!Actito.isConfigured) {
-            Actito.configure(context, configuration.applicationKey, configuration.applicationSecret)
+            configure(context, configuration)
         }
 
         // Let's get started! 🚀

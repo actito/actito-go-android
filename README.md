@@ -22,14 +22,14 @@ Use the built-in custom events to create and experiment with automations! 🤖
 | Event                         | Description                                                       |
 |-------------------------------|-------------------------------------------------------------------|
 | `intro_finished`              | Submitted when the user finishes the introduction.                |
-| `page_viewed.home`            | Submitted when the home tab is displayed.                         |
-| `page_viewed.cart`            | Submitted when the cart tab is displayed.                         |
-| `page_viewed.settings`        | Submitted when the settings tab is displayed.                     |
-| `page_viewed.inbox`           | Submitted when the inbox is displayed.                            |
-| `page_viewed.user_profile`    | Submitted when the user profile is displayed.                     |
-| `page_viewed.events`          | Submitted when the events builder is displayed.                   |
-| `page_viewed.products`        | Submitted when the products list is displayed.                    |
-| `page_viewed.product_details` | Submitted when the product details is displayed.                  |
+| `page_viewed-home`            | Submitted when the home tab is displayed.                         |
+| `page_viewed-cart`            | Submitted when the cart tab is displayed.                         |
+| `page_viewed-settings`        | Submitted when the settings tab is displayed.                     |
+| `page_viewed-inbox`           | Submitted when the inbox is displayed.                            |
+| `page_viewed-user_profile`    | Submitted when the user profile is displayed.                     |
+| `page_viewed-events`          | Submitted when the events builder is displayed.                   |
+| `page_viewed-products`        | Submitted when the products list is displayed.                    |
+| `page_viewed-product_details` | Submitted when the product details is displayed.                  |
 | `add_to_cart`                 | Submitted when the user adds a product to the cart. &#x00B9;      |
 | `remove_from_cart`            | Submitted when the user removes a product from the cart. &#x00B9; |
 | `cart_updated`                | Submitted when the cart is updated. &#x00B2;                      |
