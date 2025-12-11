@@ -14,7 +14,8 @@
         android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
         android:text="@string/inbox_options_open"
-        app:drawableStartCompat="@drawable/ic_baseline_drafts_24" />
+        app:drawableStartCompat="@drawable/ic_baseline_drafts_24"
+        app:drawableTint="?attr/colorOnSurface" />
 
     <TextView
         android:id="@+id/mark_as_read_button"
@@ -25,7 +26,8 @@
         android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
         android:text="@string/inbox_options_mark_as_read"
-        app:drawableStartCompat="@drawable/ic_baseline_mark_email_read_24" />
+        app:drawableStartCompat="@drawable/ic_baseline_mark_email_read_24"
+        app:drawableTint="?attr/colorOnSurface" />
 
     <TextView
         android:id="@+id/remove_button"
@@ -36,6 +38,7 @@
         android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
         android:text="@string/inbox_options_remove"
-        app:drawableStartCompat="@drawable/ic_baseline_delete_24" />
+        app:drawableStartCompat="@drawable/ic_baseline_delete_24"
+        app:drawableTint="?attr/colorOnSurface" />
 
 </LinearLayout>
