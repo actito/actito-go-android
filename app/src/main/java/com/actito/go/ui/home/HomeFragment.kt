@@ -83,7 +83,9 @@ class HomeFragment : Fragment() {
         }
 
         binding.locationDisabledAlertButton.setOnClickListener {
-            findNavController().navigate(R.id.settings_fragment)
+            val intent =
+                Intent(Intent.ACTION_VIEW, "re.notifica.go://notifica.re/settings".toUri())
+            findNavController().handleDeepLink(intent)
         }
 
         binding.eventsButton.setOnClickListener {

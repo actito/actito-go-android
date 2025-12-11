@@ -24,11 +24,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.actito.Actito
-import com.actito.geo.ActitoGeo
 import com.actito.go.BuildConfig
 import com.actito.go.R
 import com.actito.go.databinding.FragmentSettingsBinding
-import com.actito.go.ktx.hasLocationTrackingCapabilities
 import com.actito.go.models.AppConfiguration
 import com.actito.go.storage.preferences.ActitoSharedPreferences
 import com.actito.inbox.ktx.inbox
@@ -128,11 +126,6 @@ class SettingsFragment (): Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycle.addObserver(viewModel)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        binding.locationCard.locationSwitch.isChecked = ActitoGeo.hasLocationTrackingCapabilities
     }
 
     override fun onDestroy() {
