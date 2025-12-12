@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -53,10 +52,10 @@ class MainFragment : Fragment() {
         requireActivity().window.navigationBarColor = SurfaceColors.SURFACE_2.getColor(requireActivity())
 
         // Only shows the cart tab when enabled in the remote config.
-        binding.bottomNavigation.menu.findItem(R.id.cart_fragment).isVisible = sharedPreferences.hasStoreEnabled
+        binding.bottomNavigation.menu.findItem(R.id.cart_nested_graph).isVisible = sharedPreferences.hasStoreEnabled
 
         val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.home_fragment, R.id.cart_fragment, R.id.settings_fragment)
+            setOf(R.id.home_nested_graph, R.id.cart_nested_graph, R.id.settings_nested_graph)
         )
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
