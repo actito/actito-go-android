@@ -83,6 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:backgroundTint="?attr/colorError"
+            android:textColor="?attr/colorOnError"
             android:text="@string/profile_delete_account_button"
             android:visibility="gone"
             tools:visibility="visible" />

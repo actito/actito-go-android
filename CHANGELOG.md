@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Upcoming release
+
+- Fix card icons tint in dark mode 
+
 ## 2.0.0
 
 - Migrate to Actito SDK 5.0.0-beta.1

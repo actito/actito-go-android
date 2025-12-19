@@ -20,6 +20,7 @@
             android:text="@string/settings_inbox_title"
             android:textAppearance="?attr/textAppearanceTitleMedium"
             app:drawableStartCompat="@drawable/ic_baseline_inbox_24"
+            app:drawableTint="?attr/colorOnSurface"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/badge_label"
             app:layout_constraintStart_toStartOf="parent"
