@@ -74,6 +74,13 @@
     <string name="home_coffee_brewer_brew_button">Start brewing</string>
     <string name="home_coffee_brewer_serve_button">Serve the coffee!</string>
     <string name="home_coffee_brewer_stop_button">Cancel</string>
+    <string name="home_geofencing_alert_title">Missing permissions</string>
+    <string name="home_geofencing_alert_message">In order to show your nearby beacons we need access to your precise location.</string>
+    <string name="home_geofencing_alert_button">Allow access</string>
+    <string name="home_geofencing_alert_view_policies_button">View data policies</string>
+    <string name="home_location_disabled_alert_title">Location updates disabled</string>
+    <string name="home_location_disabled_alert_message">In order to show your nearby beacons location updates must be enabled.</string>
+    <string name="home_location_disabled_alert_button">Go to settings</string>
 
     <string name="cart_title">Cart</string>
     <string name="cart_disclaimer_message">The cart functionality is merely illustrative.\nYou are not acquiring any products, nor will you be charged.\nTest your automations with peace of mind.</string>

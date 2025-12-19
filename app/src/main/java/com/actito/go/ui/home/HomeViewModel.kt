@@ -63,6 +63,14 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun changeLocationUpdates(enabled: Boolean) {
+        if (enabled) {
+            Actito.geo().enableLocationUpdates()
+        } else {
+            Actito.geo().disableLocationUpdates()
+        }
+    }
+
     override fun onCleared() {
         Actito.geo().removeListener(this)
     }
