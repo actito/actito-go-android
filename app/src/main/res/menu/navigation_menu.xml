@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home_fragment"
+        android:id="@+id/home_nested_graph"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/navigation_home" />
 
     <item
-        android:id="@+id/cart_fragment"
+        android:id="@+id/cart_nested_graph"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         android:title="@string/navigation_cart"
         android:visible="false" />
 
     <item
-        android:id="@+id/settings_fragment"
+        android:id="@+id/settings_nested_graph"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="@string/navigation_settings" />
 

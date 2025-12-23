@@ -1,10 +1,12 @@
 package com.actito.go.ui.cart
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -63,7 +65,9 @@ class CartFragment : Fragment() {
         }
 
         binding.productsListButton.setOnClickListener {
-            findNavController().navigate(R.id.cart_to_products_list_action)
+            val intent =
+                Intent(Intent.ACTION_VIEW, "re.notifica.go://notifica.re/products".toUri())
+            findNavController().handleDeepLink(intent)
         }
 
         viewModel.entries.observe(viewLifecycleOwner) { entries ->
