@@ -2,7 +2,8 @@
 
 ## Upcoming release
 
-- Fix card icons tint in dark mode 
+- Fix card icons tint in dark mode
+- Update dependencies
 
 ## 2.0.0
 

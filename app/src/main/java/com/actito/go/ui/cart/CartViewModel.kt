@@ -19,7 +19,6 @@ import com.actito.go.live_activities.models.OrderStatus
 import com.actito.go.storage.db.ActitoDatabase
 import com.actito.go.storage.db.entities.CartEntryWithProduct
 import com.actito.go.storage.db.mappers.toModel
-import com.actito.ktx.events
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
