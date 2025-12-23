@@ -15,7 +15,6 @@ import com.actito.go.network.push.PushServiceFactory
 import com.actito.go.storage.preferences.ActitoSharedPreferences
 import com.actito.go.workers.UpdateProductsWorker
 import com.actito.iam.ktx.inAppMessaging
-import com.actito.ktx.device
 import com.actito.models.ActitoApplication
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth

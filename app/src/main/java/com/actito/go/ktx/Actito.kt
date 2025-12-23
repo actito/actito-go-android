@@ -6,7 +6,7 @@ import android.os.Build
 import androidx.core.content.ContextCompat
 import com.actito.Actito
 import com.actito.ActitoEventData
-import com.actito.ActitoEventsModule
+import com.actito.ActitoEventsComponent
 import com.actito.geo.ActitoGeo
 import com.actito.go.core.formatPrice
 import com.actito.go.models.Product
@@ -35,15 +35,15 @@ val ActitoGeo.hasGeofencingCapabilities: Boolean
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-suspend fun ActitoEventsModule.logIntroFinished() {
+suspend fun ActitoEventsComponent.logIntroFinished() {
     logCustom("intro_finished")
 }
 
-suspend fun ActitoEventsModule.logPageViewed(page: PageView) {
+suspend fun ActitoEventsComponent.logPageViewed(page: PageView) {
     logCustom("page_viewed_${page.rawValue}")
 }
 
-suspend fun ActitoEventsModule.logAddToCart(product: Product) {
+suspend fun ActitoEventsComponent.logAddToCart(product: Product) {
     val data: ActitoEventData = mapOf(
         "product" to product.let(::transformProduct)
     )
@@ -51,7 +51,7 @@ suspend fun ActitoEventsModule.logAddToCart(product: Product) {
     logCustom("add_to_cart", data)
 }
 
-suspend fun ActitoEventsModule.logRemoveFromCart(product: Product) {
+suspend fun ActitoEventsComponent.logRemoveFromCart(product: Product) {
     val data: ActitoEventData = mapOf(
         "product" to product.let(::transformProduct)
     )
@@ -59,7 +59,7 @@ suspend fun ActitoEventsModule.logRemoveFromCart(product: Product) {
     logCustom("remove_from_cart", data)
 }
 
-suspend fun ActitoEventsModule.logCartUpdated(products: List<Product>) {
+suspend fun ActitoEventsComponent.logCartUpdated(products: List<Product>) {
     val data: ActitoEventData = mapOf(
         "products" to products.map { it.let(::transformProduct) }
     )
@@ -67,11 +67,11 @@ suspend fun ActitoEventsModule.logCartUpdated(products: List<Product>) {
     logCustom("cart_updated", data)
 }
 
-suspend fun ActitoEventsModule.logCartCleared() {
+suspend fun ActitoEventsComponent.logCartCleared() {
     logCustom("cart_cleared")
 }
 
-suspend fun ActitoEventsModule.logPurchase(products: List<Product>) {
+suspend fun ActitoEventsComponent.logPurchase(products: List<Product>) {
     val total = products.sumOf { it.price }
     val data: ActitoEventData = mapOf(
         "total_price" to total,
@@ -83,7 +83,7 @@ suspend fun ActitoEventsModule.logPurchase(products: List<Product>) {
     logCustom("purchase", data)
 }
 
-suspend fun ActitoEventsModule.logProductView(product: Product) {
+suspend fun ActitoEventsComponent.logProductView(product: Product) {
     val data: ActitoEventData = mapOf(
         "product" to product.let(::transformProduct)
     )

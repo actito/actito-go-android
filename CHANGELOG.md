@@ -2,7 +2,12 @@
 
 ## Upcoming release
 
-- Fix card icons tint in dark mode 
+- Fix card icons tint in dark mode
+- Improve small screens UI
+- Add UI flow to enable beacon scanning when location capabilities are missing
+- Improve short links navigation
+- Permanently remove all data when deleting account
+- Update dependencies
 
 ## 2.0.0
 

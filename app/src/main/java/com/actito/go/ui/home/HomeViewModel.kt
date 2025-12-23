@@ -21,7 +21,6 @@ import com.actito.go.models.Product
 import com.actito.go.storage.db.ActitoDatabase
 import com.actito.go.storage.db.mappers.toModel
 import com.actito.go.storage.preferences.ActitoSharedPreferences
-import com.actito.ktx.events
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn

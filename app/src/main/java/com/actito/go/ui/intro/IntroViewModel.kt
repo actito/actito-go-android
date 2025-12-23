@@ -19,8 +19,6 @@ import com.actito.go.network.push.PushServiceFactory
 import com.actito.go.network.push.payloads.EnrollmentPayload
 import com.actito.go.storage.preferences.ActitoSharedPreferences
 import com.actito.iam.ktx.inAppMessaging
-import com.actito.ktx.device
-import com.actito.ktx.events
 import com.actito.push.ktx.push
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException

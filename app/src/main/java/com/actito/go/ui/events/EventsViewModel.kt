@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.actito.Actito
 import com.actito.go.ktx.PageView
 import com.actito.go.ktx.logPageViewed
-import com.actito.ktx.events
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch

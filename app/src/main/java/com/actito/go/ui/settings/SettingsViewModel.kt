@@ -13,8 +13,6 @@ import com.actito.go.ktx.PageView
 import com.actito.go.ktx.hasLocationTrackingCapabilities
 import com.actito.go.ktx.logPageViewed
 import com.actito.go.models.UserInfo
-import com.actito.ktx.device
-import com.actito.ktx.events
 import com.actito.models.ActitoDoNotDisturb
 import com.actito.models.ActitoTime
 import com.actito.push.ktx.push
