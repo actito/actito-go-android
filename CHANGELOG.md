@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Upcoming release
+## 2.1.0
 
 - Fix card icons tint in dark mode
 - Improve small screens UI
