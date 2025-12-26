@@ -101,6 +101,10 @@
             android:name="com.actito.go.PushReceiver"
             android:exported="false" />
 
+        <receiver
+            android:name="com.actito.go.CustomIntentReceiver"
+            android:exported="false" />
+
         <meta-data
             android:name="com.actito.debug_logging_enabled"
             android:value="true" />

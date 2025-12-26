@@ -10,6 +10,8 @@ import com.actito.go.live_activities.LiveActivitiesController
 import com.actito.go.storage.preferences.ActitoSharedPreferences
 import com.actito.push.ktx.push
 import com.google.android.material.color.DynamicColors
+import com.google.firebase.Firebase
+import com.google.firebase.crashlytics.crashlytics
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import javax.inject.Inject
@@ -44,8 +46,13 @@ class ActitoApp : Application(), Configuration.Provider {
         val configuration = preferences.appConfiguration
         if (configuration != null) {
             configure(this, configuration)
+
+            Actito.device().currentDevice?.let { device ->
+                Firebase.crashlytics.setUserId("device_${device.id}")
+            }
         }
 
+        Actito.intentReceiver = CustomIntentReceiver::class.java
         Actito.push().intentReceiver = PushReceiver::class.java
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

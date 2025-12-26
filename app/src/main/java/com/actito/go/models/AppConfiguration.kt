@@ -1,5 +1,6 @@
 package com.actito.go.models
 
+import androidx.annotation.Keep
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
@@ -7,8 +8,9 @@ data class AppConfiguration(
     val applicationKey: String,
     val applicationSecret: String,
     val loyaltyProgramId: String?,
-    val environment: Environment
+    val environment: Environment = Environment.PRODUCTION
 ) {
+    @Keep
     enum class Environment {
         PRODUCTION,
         TEST;
