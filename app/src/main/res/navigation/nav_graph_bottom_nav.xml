@@ -3,100 +3,119 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_bottom_nav"
-    app:startDestination="@id/home_fragment">
+    app:startDestination="@id/home_nested_graph">
 
-    <fragment
-        android:id="@+id/home_fragment"
-        android:name="com.actito.go.ui.home.HomeFragment"
-        android:label="@string/home_title"
-        tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/home_to_product_details_action"
-            app:destination="@id/product_details_fragment" />
-        <action
-            android:id="@+id/home_to_products_list_action"
-            app:destination="@id/products_list_fragment" />
-        <action
-            android:id="@+id/home_to_events_action"
-            app:destination="@id/events_fragment" />
+    <navigation
+        android:id="@+id/home_nested_graph"
+        app:startDestination="@id/home_fragment">
 
-        <deepLink app:uri="re.notifica.go://notifica.re/home" />
-    </fragment>
+        <fragment
+            android:id="@+id/home_fragment"
+            android:name="com.actito.go.ui.home.HomeFragment"
+            android:label="@string/home_title"
+            tools:layout="@layout/fragment_home">
+            <action
+                android:id="@+id/home_to_product_details_action"
+                app:destination="@id/product_details_fragment" />
+            <action
+                android:id="@+id/home_to_products_list_action"
+                app:destination="@id/products_list_fragment" />
+            <action
+                android:id="@+id/home_to_events_action"
+                app:destination="@id/events_fragment" />
 
-    <fragment
-        android:id="@+id/cart_fragment"
-        android:name="com.actito.go.ui.cart.CartFragment"
-        android:label="@string/cart_title"
-        tools:layout="@layout/fragment_cart">
-        <action
-            android:id="@+id/cart_to_products_list_action"
-            app:destination="@id/products_list_fragment" />
+            <deepLink app:uri="re.notifica.go://notifica.re/home" />
+        </fragment>
 
-        <deepLink app:uri="re.notifica.go://notifica.re/cart" />
-    </fragment>
+        <fragment
+            android:id="@+id/product_details_fragment"
+            android:name="com.actito.go.ui.product_details.ProductDetailsFragment"
+            android:label="@string/product_details_title"
+            tools:layout="@layout/fragment_product_details">
+            <argument
+                android:name="product_id"
+                app:argType="string"
+                app:nullable="false" />
 
-    <fragment
-        android:id="@+id/settings_fragment"
-        android:name="com.actito.go.ui.settings.SettingsFragment"
-        android:label="@string/settings_title"
-        tools:layout="@layout/fragment_settings">
-        <action
-            android:id="@+id/settings_to_profile_action"
-            app:destination="@id/profile_fragment" />
-        <action
-            android:id="@+id/settings_to_inbox_action"
-            app:destination="@id/inbox_fragment" />
+            <deepLink app:uri="re.notifica.go://notifica.re/product?id={product_id}" />
+        </fragment>
 
-        <deepLink app:uri="re.notifica.go://notifica.re/settings" />
-    </fragment>
+        <fragment
+            android:id="@+id/products_list_fragment"
+            android:name="com.actito.go.ui.products_list.ProductsListFragment"
+            android:label="@string/products_list_title"
+            tools:layout="@layout/fragment_products_list">
+            <action
+                android:id="@+id/products_list_to_product_details_action"
+                app:destination="@id/product_details_fragment" />
 
-    <fragment
-        android:id="@+id/events_fragment"
-        android:name="com.actito.go.ui.events.EventsFragment"
-        android:label="@string/events_title"
-        tools:layout="@layout/fragment_events">
-        <deepLink app:uri="re.notifica.go://notifica.re/events" />
-    </fragment>
+            <deepLink app:uri="re.notifica.go://notifica.re/products" />
+        </fragment>
 
-    <fragment
-        android:id="@+id/inbox_fragment"
-        android:name="com.actito.go.ui.inbox.InboxFragment"
-        android:label="@string/inbox_title"
-        tools:layout="@layout/fragment_inbox">
-        <deepLink app:uri="re.notifica.go://notifica.re/inbox" />
-    </fragment>
 
-    <fragment
-        android:id="@+id/product_details_fragment"
-        android:name="com.actito.go.ui.product_details.ProductDetailsFragment"
-        android:label="@string/product_details_title"
-        tools:layout="@layout/fragment_product_details">
-        <argument
-            android:name="product_id"
-            app:argType="string"
-            app:nullable="false" />
+        <fragment
+            android:id="@+id/events_fragment"
+            android:name="com.actito.go.ui.events.EventsFragment"
+            android:label="@string/events_title"
+            tools:layout="@layout/fragment_events">
+            <deepLink app:uri="re.notifica.go://notifica.re/events" />
+        </fragment>
 
-        <deepLink app:uri="re.notifica.go://notifica.re/product?id={product_id}" />
-    </fragment>
+    </navigation>
 
-    <fragment
-        android:id="@+id/products_list_fragment"
-        android:name="com.actito.go.ui.products_list.ProductsListFragment"
-        android:label="@string/products_list_title"
-        tools:layout="@layout/fragment_products_list">
-        <action
-            android:id="@+id/products_list_to_product_details_action"
-            app:destination="@id/product_details_fragment" />
+    <navigation
+        android:id="@+id/settings_nested_graph"
+        app:startDestination="@id/settings_fragment">
 
-        <deepLink app:uri="re.notifica.go://notifica.re/products" />
-    </fragment>
+        <fragment
+            android:id="@+id/settings_fragment"
+            android:name="com.actito.go.ui.settings.SettingsFragment"
+            android:label="@string/settings_title"
+            tools:layout="@layout/fragment_settings">
+            <action
+                android:id="@+id/settings_to_profile_action"
+                app:destination="@id/profile_fragment" />
+            <action
+                android:id="@+id/settings_to_inbox_action"
+                app:destination="@id/inbox_fragment" />
 
-    <fragment
-        android:id="@+id/profile_fragment"
-        android:name="com.actito.go.ui.profile.ProfileFragment"
-        android:label="@string/profile_title"
-        tools:layout="@layout/fragment_profile">
-        <deepLink app:uri="re.notifica.go://notifica.re/profile" />
-    </fragment>
+            <deepLink app:uri="re.notifica.go://notifica.re/settings" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/inbox_fragment"
+            android:name="com.actito.go.ui.inbox.InboxFragment"
+            android:label="@string/inbox_title"
+            tools:layout="@layout/fragment_inbox">
+            <deepLink app:uri="re.notifica.go://notifica.re/inbox" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/profile_fragment"
+            android:name="com.actito.go.ui.profile.ProfileFragment"
+            android:label="@string/profile_title"
+            tools:layout="@layout/fragment_profile">
+            <deepLink app:uri="re.notifica.go://notifica.re/profile" />
+        </fragment>
+
+    </navigation>
+
+    <navigation
+        android:id="@+id/cart_nested_graph"
+        app:startDestination="@id/cart_fragment">
+
+        <fragment
+            android:id="@+id/cart_fragment"
+            android:name="com.actito.go.ui.cart.CartFragment"
+            android:label="@string/cart_title"
+            tools:layout="@layout/fragment_cart">
+            <action
+                android:id="@+id/cart_to_products_list_action"
+                app:destination="@id/products_list_fragment" />
+
+            <deepLink app:uri="re.notifica.go://notifica.re/cart" />
+        </fragment>
+
+    </navigation>
 
 </navigation>

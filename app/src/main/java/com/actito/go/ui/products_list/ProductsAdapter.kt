@@ -9,7 +9,7 @@ import com.actito.go.R
 import com.actito.go.core.formatPrice
 import com.actito.go.databinding.ViewProductBinding
 import com.actito.go.ktx.dp
-import com.actito.go.ktx.toHtml
+import com.actito.go.ktx.stripHtml
 import com.actito.go.models.Product
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -45,7 +45,7 @@ class ProductsAdapter(
                 .into(binding.showcaseImage)
 
             binding.nameLabel.text = product.name
-            binding.descriptionLabel.text = product.description.toHtml()
+            binding.descriptionLabel.text = product.description.stripHtml()
             binding.priceLabel.text = product.price.let(::formatPrice)
 
             binding.root.setOnClickListener {

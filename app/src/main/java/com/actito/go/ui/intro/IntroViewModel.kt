@@ -15,12 +15,10 @@ import com.actito.go.R
 import com.actito.go.core.createDynamicShortcuts
 import com.actito.go.core.loadRemoteConfig
 import com.actito.go.ktx.logIntroFinished
-import com.actito.go.network.push.PushService
+import com.actito.go.network.push.PushServiceFactory
 import com.actito.go.network.push.payloads.EnrollmentPayload
 import com.actito.go.storage.preferences.ActitoSharedPreferences
 import com.actito.iam.ktx.inAppMessaging
-import com.actito.ktx.device
-import com.actito.ktx.events
 import com.actito.push.ktx.push
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
@@ -39,7 +37,7 @@ import javax.inject.Inject
 class IntroViewModel @Inject constructor(
     @param:ApplicationContext private val context: Context,
     private val preferences: ActitoSharedPreferences,
-    private val pushService: PushService,
+    private val pushServiceFactory: PushServiceFactory,
 ) : ViewModel() {
 
     private val _currentPage = MutableLiveData(IntroPage.WELCOME)
@@ -88,10 +86,12 @@ class IntroViewModel @Inject constructor(
                 } else {
                     Actito.device().updateUser(user.uid, user.displayName)
 
-                    val programId = preferences.appConfiguration?.loyaltyProgramId
+                    val configuration = preferences.appConfiguration
+                    val programId = configuration?.loyaltyProgramId
                     if (programId != null) {
                         Timber.d("Creating loyalty program enrollment.")
 
+                        val pushService = pushServiceFactory.createService(configuration.environment.baseUrl)
                         val response = pushService.createEnrollment(
                             programId = programId,
                             payload = EnrollmentPayload(

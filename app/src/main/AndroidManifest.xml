@@ -53,6 +53,16 @@
                     android:host="${configuration_link_host}"
                     android:scheme="https" />
             </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="${test_configuration_link_host}"
+                    android:scheme="https" />
+            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -89,6 +99,10 @@
 
         <receiver
             android:name="com.actito.go.PushReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.actito.go.CustomIntentReceiver"
             android:exported="false" />
 
         <meta-data

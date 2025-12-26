@@ -19,6 +19,7 @@
             android:drawablePadding="8dp"
             android:text="@string/settings_topics_title"
             android:textAppearance="?attr/textAppearanceTitleMedium"
+            app:drawableTint="?attr/colorOnSurface"
             app:drawableStartCompat="@drawable/ic_baseline_sell_24" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial

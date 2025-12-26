@@ -19,6 +19,7 @@
             android:text="@string/profile_membership_card"
             android:textAppearance="?attr/textAppearanceTitleMedium"
             app:drawableStartCompat="@drawable/ic_baseline_card_membership_24"
+            app:drawableTint="?attr/colorOnSurface"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/chevron"
             app:layout_constraintStart_toStartOf="parent"

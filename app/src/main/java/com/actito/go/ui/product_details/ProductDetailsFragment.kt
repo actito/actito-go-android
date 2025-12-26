@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.actito.go.R
 import com.actito.go.core.formatPrice
 import com.actito.go.databinding.FragmentProductDetailsBinding
-import com.actito.go.ktx.toHtml
+import com.actito.go.ktx.stripHtml
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,7 +53,7 @@ class ProductDetailsFragment : Fragment() {
 
             binding.nameLabel.text = product.name
             binding.priceLabel.text = product.price.let(::formatPrice)
-            binding.descriptionLabel.text = product.description.toHtml()
+            binding.descriptionLabel.text = product.description.stripHtml()
 
             binding.content.isVisible = true
         }

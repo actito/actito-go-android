@@ -78,6 +78,15 @@
                 tools:text="Actito Go" />
 
             <TextView
+                android:id="@+id/app_environment_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:visibility="gone"
+                tools:text="Test Application" />
+
+            <TextView
                 android:id="@+id/app_id_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

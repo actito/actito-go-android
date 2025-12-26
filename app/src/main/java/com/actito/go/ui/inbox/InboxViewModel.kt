@@ -16,7 +16,6 @@ import com.actito.go.ktx.PageView
 import com.actito.go.ktx.logPageViewed
 import com.actito.inbox.ktx.inbox
 import com.actito.inbox.models.ActitoInboxItem
-import com.actito.ktx.events
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch

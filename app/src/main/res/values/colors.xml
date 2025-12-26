@@ -6,4 +6,7 @@
     <color name="primary">#2B42F7</color>
     <color name="disabled_grey">#D2D2D2</color>
     <color name="coffee">#674734</color>
+
+    <color name="alert_outline">#D4A72C</color>
+    <color name="alert_background">#FFF8C5</color>
 </resources>

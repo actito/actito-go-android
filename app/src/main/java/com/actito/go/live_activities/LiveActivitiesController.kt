@@ -13,7 +13,6 @@ import com.actito.go.live_activities.models.OrderContentState
 import com.actito.go.live_activities.ui.CoffeeLiveNotification
 import com.actito.go.live_activities.ui.OrderStatusLiveNotification
 import com.actito.go.storage.datastore.ActitoDataStore
-import com.actito.ktx.events
 import com.actito.push.ktx.push
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

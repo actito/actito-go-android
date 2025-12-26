@@ -12,13 +12,11 @@ import androidx.navigation.findNavController
 import com.actito.Actito
 import com.actito.go.R
 import com.actito.go.core.DeepLinksService
+import com.actito.go.core.determineEnvironment
 import com.actito.go.core.extractConfigurationCode
 import com.actito.go.databinding.ActivityMainBinding
 import com.actito.go.ktx.observeInLifecycle
-import com.actito.go.ktx.parcelableExtra
 import com.actito.models.ActitoNotification
-import com.actito.push.ktx.INTENT_ACTION_ACTION_OPENED
-import com.actito.push.ktx.INTENT_ACTION_NOTIFICATION_OPENED
 import com.actito.push.ktx.push
 import com.actito.push.ui.ActitoPushUI
 import com.actito.push.ui.ktx.pushUI
@@ -114,10 +112,11 @@ class MainActivity : AppCompatActivity(), ActitoPushUI.NotificationLifecycleList
     private fun handleConfigurationIntent(intent: Intent): Boolean {
         val uri = intent.data ?: return false
         val code = extractConfigurationCode(uri) ?: return false
+        val environment = determineEnvironment(uri)
 
         lifecycleScope.launch {
             try {
-                when (viewModel.configure(code)) {
+                when (viewModel.configure(code, environment)) {
                     MainViewModel.ConfigurationResult.ALREADY_CONFIGURED -> {
                         AlertDialog.Builder(this@MainActivity)
                             .setTitle(R.string.main_configured_dialog_title)

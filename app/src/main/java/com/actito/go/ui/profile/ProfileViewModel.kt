@@ -13,8 +13,6 @@ import com.actito.go.ktx.PageView
 import com.actito.go.ktx.logPageViewed
 import com.actito.go.models.UserInfo
 import com.actito.go.storage.preferences.ActitoSharedPreferences
-import com.actito.ktx.device
-import com.actito.ktx.events
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
 import com.google.firebase.Firebase
@@ -108,7 +106,7 @@ class ProfileViewModel @Inject constructor(
         user.delete().await()
 
         // Register the device as anonymous.
-        Actito.device().updateUser(userId = null, userName = null)
+        Actito.unlaunch()
     }
 
     suspend fun handleAuthenticationResult(result: GetCredentialResponse) {
