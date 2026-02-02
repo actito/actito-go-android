@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.1.1
+
+- Update Actito to 5.0.0
+- Update dependencies
+
 ## 2.1.0
 
 - Fix card icons tint in dark mode
