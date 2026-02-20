@@ -1,3 +1,4 @@
+import groovy.json.StringEscapeUtils
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileInputStream
 import java.util.Properties
@@ -64,7 +65,7 @@ android {
             buildConfigField(
                 "String",
                 "GOOGLE_AUTH_SERVER_ID",
-                "\"${properties.getProperty("google.auth.server.id.debug")}\""
+                "\"${StringEscapeUtils.escapeJava(properties.getProperty("google.auth.server.id.debug"))}\""
             )
 
             manifestPlaceholders["configuration_link_host"] = "go-demo-dev.ntc.re"
@@ -82,7 +83,7 @@ android {
             buildConfigField(
                 "String",
                 "GOOGLE_AUTH_SERVER_ID",
-                "\"${properties.getProperty("google.auth.server.id.release")}\""
+                "\"${StringEscapeUtils.escapeJava(properties.getProperty("google.auth.server.id.release"))}\""
             )
 
             manifestPlaceholders["configuration_link_host"] = "go-demo.ntc.re"
