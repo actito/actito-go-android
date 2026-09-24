@@ -12,7 +12,6 @@ import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.lifecycleScope
@@ -92,7 +91,13 @@ class ScannerCameraFragment : Fragment() {
     }
 
     private fun handleBarcode(barcode: String) {
-        setFragmentResult("scan_barcode", bundleOf("barcode" to barcode))
+        setFragmentResult(
+            requestKey = "scan_barcode",
+            result = Bundle().apply {
+                putString("barcode", barcode)
+            },
+        )
+
         findNavController().popBackStack()
     }
 

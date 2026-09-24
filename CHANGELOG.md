@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Upcoming release
+
+- Update Actito to 5.2.0
+- Update dependencies
+- Update assets
+
 ## 2.1.1
 
 - Update Actito to 5.0.0

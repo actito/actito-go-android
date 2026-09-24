@@ -5,7 +5,6 @@ import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.androidx.navigation)
     alias(libs.plugins.kotlin.parcelize)
@@ -31,10 +30,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "LOCATION_DATA_PRIVACY_POLICY_URL", "\"https://ntc.re/0OMbJKeJ2m\"")
-    }
-
-    ksp {
-        arg("room.schemaLocation", "$projectDir/schemas")
     }
 
     signingConfigs {
@@ -97,14 +92,19 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlin {
-        compilerOptions {
-            jvmTarget = JvmTarget.JVM_11
-        }
-    }
     buildFeatures {
         viewBinding = true
         buildConfig = true
+    }
+}
+
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_11
     }
 }
 
